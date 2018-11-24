@@ -51,7 +51,15 @@ app.post('/api/book',(req,res)=>{
 })
 
 /*** UPDATE ***/
-
+app.post('/api/book_update',(req,res)=>{
+    Book.findByIdAndUpdate(req.body._id,req.body,{new:true},(err,doc)=>{
+        if(err) return res.status(400).send(err);
+        res.json({
+            success: true,
+            doc
+        })
+    })
+});
 
 /*** DELETE ***/
 
