@@ -62,7 +62,14 @@ app.post('/api/book_update',(req,res)=>{
 });
 
 /*** DELETE ***/
+app.delete('/api/delete_book',(req,res)=>{
+    const id = req.query.id;
 
+    Book.findByIdAndRemove(id,(err,doc)=>{
+        if(err) return res.status(400).send(err);
+        res.json(true)
+    })
+});
 
 const port = process.env.PORT || 3001;
 app.listen(port,()=>{
