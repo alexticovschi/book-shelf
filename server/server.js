@@ -89,6 +89,28 @@ app.post('/api/login',(req,res)=>{
 })
 
 
+/*** GET REVIEWER ***/
+app.get('/api/getReviewer',(req,res)=>{
+    const id = req.query.id;
+
+    User.findById(id,(err,doc)=>{
+        if(err) return res.status(400).send(err);
+        res.json({
+            firstname: doc.firstname,
+            lastname: doc.lastname
+        })
+    })
+})
+
+
+/*** GET USERS ***/
+app.get('/api/users',(req,res)=>{
+    User.find({},(err,users)=>{
+        if(err) return res.status(400).send(err);
+        res.status(200).send(users);
+    })
+})
+
 
 /*** UPDATE ***/
 app.post('/api/book_update',(req,res)=>{
