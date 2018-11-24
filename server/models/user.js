@@ -16,7 +16,7 @@ const userSchema = mongoose.Schema({
         required: true,
         minlength: 6
     },
-    name: {
+    firstname: {
         type: String,
         maxlength: 100
     },
@@ -32,6 +32,24 @@ const userSchema = mongoose.Schema({
         type: String
     }
 });
+
+userSchema.pre('save',function(next){
+    const user = this;
+
+    if (user.isModified('password')) {
+        bcrypt.genSalt(SALT_I,(err,salt)=>{
+            if (err) return next(err);
+
+            bcrypt.hash(user.password, salt, (err, hash)=>{
+                if (err) return next(err);
+                user.password = hash;
+                next();
+            });
+        })
+    } else {
+        next();
+    }
+})
 
 const User = mongoose.model('User', userSchema);
 
