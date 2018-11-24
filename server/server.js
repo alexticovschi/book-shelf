@@ -112,6 +112,15 @@ app.get('/api/users',(req,res)=>{
 })
 
 
+/*** GET USER/REVIEWER POSTS ***/
+app.get('/api/user_posts',(req,res)=>{
+    Book.find({ ownerId:req.query.user }).exec((err,doc)=>{
+        if(err) return status(400).send(err);
+        res.send(doc)
+    })
+})
+
+
 /*** UPDATE ***/
 app.post('/api/book_update',(req,res)=>{
     Book.findByIdAndUpdate(req.body._id,req.body,{new:true},(err,doc)=>{
