@@ -2,6 +2,7 @@ import React from 'react';
 import SideNav from 'react-simple-sidenav';
 import SidenavItems from './sidenav_items';
 
+
 const Nav = (props) => {
     return (
         <SideNav
@@ -15,6 +16,7 @@ const Nav = (props) => {
             <SidenavItems
               onHideNav={props.onHideNav}
             />    
+            Items    
         </SideNav>
     );
 };
