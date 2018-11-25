@@ -65,6 +65,17 @@ app.post('/api/register',(req,res)=>{
     })
 })
 
+/*** CHECKING USER AUTHENTICATION ***/ 
+app.get('/api/auth', auth, (req,res)=>{
+    res.json({
+        isAuth: true,
+        id: req.user._id,
+        email: req.user.email,
+        firstname: req.user.firstname,
+        lastname: req.user.lastname
+    })
+})
+
 
 /*** LOGIN USER ***/ 
 app.post('/api/login',(req,res)=>{
