@@ -11,6 +11,7 @@ mongoose.connect(config.DATABASE);
 
 const { User } = require('./models/user');
 const { Book } = require('./models/book');
+const { auth } = require('./middleware/auth');
 
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -65,7 +66,7 @@ app.post('/api/register',(req,res)=>{
 })
 
 
-/*** LOGGING USERS ***/ 
+/*** LOGIN USER ***/ 
 app.post('/api/login',(req,res)=>{
     User.findOne({ 'email':req.body.email }, (err,user)=>{
         if(!user) return res.json({ isAuth:false, message:'Auth failed! Email not found.' });
@@ -87,6 +88,15 @@ app.post('/api/login',(req,res)=>{
         })
     })
 })
+
+
+/*** LOGOUT USER ***/
+app.get('/api/logout', auth, (req,res)=>{
+    req.user.deleteToken(req.token, (err,user)=>{
+        if(err) return res.status(400).send(err);
+        res.sendStatus(200);
+    })
+});
 
 
 /*** GET REVIEWER ***/
