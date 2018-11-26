@@ -17,4 +17,28 @@ export function getBooks(
         type: 'GET_BOOKS',
         payload: request
     }
+} 
+
+export function getBookWithReviewer(id){
+    const request = axios.get(`/api/getBook?id=${id}`)
+
+    return (dispatch)=>{
+        request.then(( { data } )=>{
+            let book = data;
+            
+            axios.get(`/api/getReviewer?id=${book.ownerId}`)
+                .then(( { data } )=>{
+                    let response = {
+                        book,
+                        reviewer: data
+                    }
+                    
+                    dispatch({
+                        type: 'GET_BOOK_WITH_REVIEWER',
+                        payload: response
+                    })
+                })
+
+        })
+    }
 }
