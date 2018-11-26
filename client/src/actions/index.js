@@ -42,3 +42,14 @@ export function getBookWithReviewer(id){
         })
     }
 }
+
+
+export function clearBookWithReviewer(){
+    return {
+        type: 'CLEAR_BOOK_WITH_REVIEWER',
+        payload: {
+            book: {},
+            reviewer: {}
+        }
+    }
+}

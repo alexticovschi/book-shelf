@@ -295,13 +295,13 @@ header .navItem span {
 }
 
 .br_container .br_header h2{
-    font-weight: 300;
-    font-size: 38px;
+    font-weight: 400;
+    font-size: 23px;
     margin: 0px;
 }
 .br_container .br_header h5{
     margin: 5px 0px;
-    font-size: 31px;
+    font-size: 20px;
     color: #02bcd4;
 }
 
@@ -314,7 +314,7 @@ header .navItem span {
 }
 
 .br_container .br_review {
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 300;
     line-height: 27px;
 }
