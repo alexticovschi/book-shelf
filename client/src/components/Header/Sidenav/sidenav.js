@@ -16,7 +16,6 @@ const Nav = (props) => {
             <SidenavItems
               onHideNav={props.onHideNav}
             />    
-            Items    
         </SideNav>
     );
 };
