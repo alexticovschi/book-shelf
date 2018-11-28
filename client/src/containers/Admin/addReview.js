@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { addReview, clearNewBook } from '../../actions';
 
 class AddReview extends Component {
 
@@ -14,7 +16,18 @@ class AddReview extends Component {
 		}
 	}
 
+	componentWillUnmount() {
+		this.props.dispatch(clearNewBook());
+	}
+	
 
+	onShowNewBook = (book) => (
+		book.post ?
+			<div className="conf_link">
+				<Link to={`/books/${book.bookId}`}>Review added! Click the link to see the post</Link>
+			</div>
+		: null
+	);
 
 	onHandleInput = (e, name) => {
 		const newFormdata = {
@@ -28,7 +41,10 @@ class AddReview extends Component {
 	onSubmitForm = (e) => {
 		e.preventDefault();
 
-		console.log(this.state)
+		this.props.dispatch(addReview({
+			...this.state.formdata,
+			ownerId: this.props.user.login.id
+		}));
 	}
 
 	render() {
@@ -41,7 +57,7 @@ class AddReview extends Component {
 					<div className="form_element">
 						<input 
 							type="text"
-							placeholder="Enter name"
+							placeholder="Enter book name"
 							value={formdata.name}
 							onChange={(e) => this.onHandleInput(e,'name')}
 						/>
@@ -94,10 +110,18 @@ class AddReview extends Component {
 					</div>	
 
 					<button type="submit">Add Review</button>	
+					{this.props.books.newbook ? this.onShowNewBook(this.props.books.newbook) : null}
 				</form>
 			</div>
 		)
 	}
 }
 
-export default AddReview;
+const mapStateToProps = (state) => {
+	console.log(state);
+	return {
+		books: state.books
+	}
+}
+
+export default connect(mapStateToProps)(AddReview);
