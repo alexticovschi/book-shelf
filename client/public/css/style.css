@@ -176,6 +176,7 @@ header .navItem span {
     border: none;
     margin-top: 20px;
     width: 340px;
+    cursor: pointer;
 }
 .rl_container.article button {
     width: 80%;
@@ -214,6 +215,7 @@ header .navItem span {
     width: 80%;
     box-sizing: border-box;
     display: inline-block;
+    cursor: pointer;
 }
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */

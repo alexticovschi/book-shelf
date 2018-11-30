@@ -31,7 +31,12 @@ export default function(state={}, action) {
                 ...state, 
                 updated_review: action.payload.success,
                 book: action.payload.doc
-             }            
+             }        
+        case 'DELETE_REVIEW':
+            return { 
+                ...state, 
+                review_deleted: action.payload 
+            }         
         default:
             return state;
     }

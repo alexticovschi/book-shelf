@@ -103,6 +103,15 @@ export function updateBookReview(data) {
 }
 
 
+export function deleteBookReview(id) {
+    const request = axios.delete(`/api/delete_book?id=${id}`).then(res => res.data);
+    return {
+        type: 'DELETE_REVIEW',
+        payload: request
+    }
+}
+
+
 export function clearReview() {
     return {
         type: 'CLEAR_REVIEW',
