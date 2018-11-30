@@ -16,10 +16,11 @@ class Login extends Component {
 		this.props.dispatch(loginUser(this.state));
 	}
 
-	componentWillReceiveProps(nextProps){
+	static getDerivedStateFromProps(nextProps){
 		if (nextProps.user.login && nextProps.user.login.isAuth) {
-			this.props.history.push('/user');
+			nextProps.history.push('/user');
 		} 
+		return null;
 	}
 
 	render() {
