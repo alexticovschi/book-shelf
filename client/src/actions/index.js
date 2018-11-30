@@ -83,8 +83,6 @@ export function getUserPosts(userId){
 }
 
 
-
-
 export function getBookReview(id){
     const request = axios.get(`/api/getBook?id=${id}`).then(res => res.data);
 
@@ -92,6 +90,27 @@ export function getBookReview(id){
         type: 'GET_BOOK_REVIEW',
         payload: request
     }    
+}
+
+
+export function updateBookReview(data) {
+    const request = axios.post(`/api/book_update`,data).then(res => res.data);
+
+    return {
+        type: 'UPDATE_BOOK_REVIEW',
+        payload: request
+    }
+}
+
+
+export function clearReview() {
+    return {
+        type: 'CLEAR_REVIEW',
+        payload: {
+            book: null,
+            updated_review: false
+        }
+    }
 }
 
 

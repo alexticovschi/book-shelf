@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getBookReview, updateReview, clearBookWithReviewer, deleteReview } from '../../actions';
+import { getBookReview, clearReview, deleteReview, updateBookReview } from '../../actions';
 
 class EditReview extends PureComponent {
 
@@ -12,7 +12,7 @@ class EditReview extends PureComponent {
 	onHandleInput = (e, name) => {
 		const newFormdata = {
 			...this.state.formdata
-		}
+        }
 		newFormdata[name] = e.target.value;
 
 		this.setState({ formdata: newFormdata })
@@ -20,22 +20,41 @@ class EditReview extends PureComponent {
 
 	onSubmitForm = (e) => {
 		e.preventDefault();
-        console.log(this.state.formdata)
+        
+        this.props.dispatch(updateBookReview(this.state.formdata));
     }
 
     componentDidMount(){
         this.props.dispatch(getBookReview(this.props.match.params.id));
     }
 
-    static getDerivedStateFromProps(nextProps) {
+    componentWillUnmount(){
+        this.props.dispatch(clearReview());
+    }
+
+    // static getDerivedStateFromProps(nextProps) {
+    //     const reviewdata = { ...nextProps.books.book };
+    //     return { formdata: reviewdata }
+    // }
+
+    componentWillReceiveProps(nextProps) {
         const reviewdata = { ...nextProps.books.book };
-        return { formdata: reviewdata }
+        this.setState({ formdata: reviewdata })
     }
 
 	render() {
-        let formdata = this.state.formdata;
+        const formdata = this.state.formdata;
+        const book = this.props.books.book;
+        const updated_review = this.props.books.updated_review;
 		return (
 			<div className="rl_container article">
+                { 
+                    updated_review ?   
+                        <div className="edit_confirm">
+                            Review Updated, <Link to={`/books/${book._id}`}>Click here to view the Post!</Link>
+                        </div>
+                    : null
+                }
 				<form onSubmit={this.onSubmitForm}>
 					<h2>Edit review</h2>
 
