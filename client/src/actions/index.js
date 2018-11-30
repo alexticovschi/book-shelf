@@ -83,6 +83,18 @@ export function getUserPosts(userId){
 }
 
 
+
+
+export function getBookReview(id){
+    const request = axios.get(`/api/getBook?id=${id}`).then(res => res.data);
+
+    return {
+        type: 'GET_BOOK_REVIEW',
+        payload: request
+    }    
+}
+
+
 /*** USER ***/ 
 export function loginUser({email, password}){
     const request = axios.post('/api/login',{email,password})

@@ -2,6 +2,8 @@ export default function(state={}, action) {
     switch(action.type) {
         case 'GET_BOOKS':
             return { ...state, list:action.payload }
+        case 'GET_BOOK_REVIEW':
+            return { ...state, book:action.payload }
         case 'GET_BOOK_WITH_REVIEWER':
             return { 
                 ...state, 
