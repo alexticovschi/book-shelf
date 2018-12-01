@@ -143,3 +143,13 @@ export function auth(){
         payload: request
     }
 }
+
+
+export function getUsers(){
+    const request = axios.get('/api/users').then(res => res.data);
+
+    return {
+        type: 'GET_USERS',
+        payload: request
+    }
+}
