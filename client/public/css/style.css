@@ -369,6 +369,13 @@ header .navItem span {
     padding-top: 31px;
 }
 
+.logout_container .logout_img {
+    margin: 0 auto;
+    margin-top: 70px;
+    display: flex;
+    min-width: 22%;
+}
+
 /*=============================
             LOADER
 ===============================*/

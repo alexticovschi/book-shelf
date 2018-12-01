@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import Home from './components/Home/home';
 import BookView from './components/Books/book_view';
 import Login from './containers/Admin/login';
+import Logout from './containers/Admin/logout';
 import Layout from './hoc/layout';
 import User from './components/Admin';
 import AddReview from './containers/Admin/addReview';
@@ -19,6 +20,7 @@ const Routes = () => {
             <Switch>
                 <Route path="/" exact component={Auth(Home,null)}/>              
                 <Route path="/login" exact component={Auth(Login,false)}/>
+                <Route path="/user/logout" exact component={Auth(Logout,true)}/>
                 <Route path="/user" exact component={Auth(User,true)}/>
                 <Route path="/user/add" exact component={Auth(AddReview,true)}/>
                 <Route path="/user/edit-post/:id" exact component={Auth(EditReview,true)}/>
