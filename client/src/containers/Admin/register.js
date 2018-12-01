@@ -16,6 +16,19 @@ class Register extends Component {
         this.props.dispatch(getUsers());
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.user.registered === false) {
+            this.setState({ error: 'Something went wrong!' })
+        } else {
+            this.setState({
+                firstname: '',
+                lastname: '',
+                email: '',
+                password: ''
+            })
+        }
+    }
+
     onInputFirstname = (e) => this.setState({ firstname: e.target.value });
      
     onInputLastname = (e) => this.setState({ lastname: e.target.value });
@@ -90,6 +103,9 @@ class Register extends Component {
                     <button type="submit">Add User</button>
                     <div className="error">
                         {this.state.error}
+                    </div>
+                    <div className="error">
+                        {this.state.error ? 'Please fill the form and try again.' : null}
                     </div>
                 </form>
 
