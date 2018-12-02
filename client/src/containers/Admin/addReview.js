@@ -50,75 +50,83 @@ class AddReview extends Component {
 	render() {
 		let formdata = this.state;
 		return (
-			<div className="rl_container article">
-				<form onSubmit={this.onSubmitForm}>
-					<h2>Add a review</h2>
+			<div className="rl_container article mt-5">
+				<div className="container">
+					<div className="row align-items-center justify-content-center">
+						<div className="col col-sm-12 col-md-10 col-lg-10 col-xl-8">
+							<form onSubmit={this.onSubmitForm}>
+								<h2>Add a Review</h2>
 
-					<div className="form_element">
-						<input 
-							type="text"
-							placeholder="Enter book name"
-							value={formdata.name}
-							onChange={(e) => this.onHandleInput(e,'name')}
-						/>
+								<div className="form_element mt-4">
+									<input 
+										type="text"
+										placeholder="Enter book name"
+										value={formdata.name}
+										onChange={(e) => this.onHandleInput(e,'name')}
+									/>
+								</div>
+
+								<div className="form_element">
+									<input 
+										type="text"
+										placeholder="Enter author"
+										value={formdata.author}
+										onChange={(e) => this.onHandleInput(e,'author')}
+									/>
+								</div>		
+
+								<textarea 
+									rows="6"
+									placeholder="Add review"
+									value={formdata.review}
+									onChange={(e) => this.onHandleInput(e,'review')}	
+								/>
+
+								<div className="form_element">
+									<input 
+										type="number"
+										placeholder="Enter pages"
+										value={formdata.pages}
+										onChange={(e) => this.onHandleInput(e,'pages')}
+									/>
+								</div>	
+
+								<div className="form_element">
+									<select 
+										style={{padding: "16px 0px"}}
+										value={formdata.rating}
+										onChange={(e) => this.onHandleInput(e,'rating')}
+									>
+										<option value="0">Rate this Book</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</div>
+
+								<div className="form_element">
+									<input 
+										type="number"
+										placeholder="Enter price"
+										value={formdata.price}
+										onChange={(e) => this.onHandleInput(e,'price')}
+									/>
+								</div>	
+
+								<button type="submit">Add Review</button>	
+								{this.props.books.newbook ? this.onShowNewBook(this.props.books.newbook) : null}
+							</form>
+						</div>
 					</div>
-
-					<div className="form_element">
-						<input 
-							type="text"
-							placeholder="Enter author"
-							value={formdata.author}
-							onChange={(e) => this.onHandleInput(e,'author')}
-						/>
-					</div>		
-
-					<textarea 
-						placeholder="Add review"
-						value={formdata.review}
-						onChange={(e) => this.onHandleInput(e,'review')}	
-					/>
-
-					<div className="form_element">
-						<input 
-							type="number"
-							placeholder="Enter pages"
-							value={formdata.pages}
-							onChange={(e) => this.onHandleInput(e,'pages')}
-						/>
-					</div>	
-
-					<div className="form_element">
-						<select 
-							value={formdata.rating}
-							onChange={(e) => this.onHandleInput(e,'rating')}
-							>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-					</div>
-
-					<div className="form_element">
-						<input 
-							type="number"
-							placeholder="Enter price"
-							value={formdata.price}
-							onChange={(e) => this.onHandleInput(e,'price')}
-						/>
-					</div>	
-
-					<button type="submit">Add Review</button>	
-					{this.props.books.newbook ? this.onShowNewBook(this.props.books.newbook) : null}
-				</form>
+				</div>
 			</div>
 		)
 	}
 }
 
 const mapStateToProps = (state) => {
-	console.log(state);
 	return {
 		books: state.books
 	}

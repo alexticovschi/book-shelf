@@ -63,66 +63,75 @@ class Register extends Component {
 
     render() {
         return (
-            <div className="rl_container">
-                <form onSubmit={this.onSubmitForm}>
-                    <h2>Add User</h2>
+            <div className="rl_container article">
+                <div className="container">
+                    <div className="row align-items-center justify-content-center mt-5">
+                        <div className="col col-sm-12 col-md-10 col-lg-10 col-xl-8">
+                            <form onSubmit={this.onSubmitForm}>
+                                <h2>Add User</h2>
 
-                    <div className="form_element">
-                        <input 
-                            type="text"
-                            placeholder="Firstname"
-                            value={this.state.firstname}
-                            onChange={this.onInputFirstname}
-                            />
-                    </div>
-                    <div className="form_element">
-                        <input 
-                            type="text"
-                            placeholder="Lastname"
-                            value={this.state.lastname}
-                            onChange={this.onInputLastname}
-                            />
-                    </div>
-                    <div className="form_element">
-                        <input 
-                            type="email"
-                            placeholder="Email"
-                            value={this.state.email}
-                            onChange={this.onInputEmail}
-                            />
-                    </div>
-                    <div className="form_element">
-                        <input 
-                            type="password"
-                            placeholder="Password"
-                            value={this.state.password}
-                            onChange={this.onInputPassword}
-                            />
-                    </div>
+                                <div className="form_element">
+                                    <input 
+                                        type="text"
+                                        placeholder="Firstname"
+                                        value={this.state.firstname}
+                                        onChange={this.onInputFirstname}
+                                        />
+                                </div>
+                                <div className="form_element">
+                                    <input 
+                                        type="text"
+                                        placeholder="Lastname"
+                                        value={this.state.lastname}
+                                        onChange={this.onInputLastname}
+                                        />
+                                </div>
+                                <div className="form_element">
+                                    <input 
+                                        type="email"
+                                        placeholder="Email"
+                                        value={this.state.email}
+                                        onChange={this.onInputEmail}
+                                        />
+                                </div>
+                                <div className="form_element">
+                                    <input 
+                                        type="password"
+                                        placeholder="Password"
+                                        value={this.state.password}
+                                        onChange={this.onInputPassword}
+                                        />
+                                </div>
 
-                    <button type="submit">Add User</button>
-                    <div className="error">
-                        {this.state.error}
+                                <button type="submit">Add User</button>
+                                <div className="error">
+                                    {this.state.error}
+                                </div>
+                                <div className="error">
+                                    {this.state.error ? 'Please fill the form and try again.' : null}
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div className="error">
-                        {this.state.error ? 'Please fill the form and try again.' : null}
+                    <div className="container mt-2">
+                        <div className="row align-items-center justify-content-center">
+                            <div className="col col-md-8 col-lg-8 col-xl-8">
+                                <h4>Current Users: </h4>
+                                <table className="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Firstname</th>
+                                            <th>Lastname</th>
+                                            <th>Email</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {this.showUsers(this.props.user)}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                </form>
-
-                <div className="current_users">
-                    <h4>Current Users: </h4>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Firstname</th>
-                                <th>Lastname</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.showUsers(this.props.user)}
-                        </tbody>
-                    </table>
                 </div>
             </div>
         )

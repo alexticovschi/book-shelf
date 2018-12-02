@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../components/Header/header'
+import Navbar from '../components/Header/Sidenav/navbar';
 
 const Layout = (props) => {
     return (
         <div>
-            <Header/>
-            <div>{props.children}</div>
+            <Navbar/>
+            <div className="mt-5">{props.children}</div>
         </div>
     );
 };

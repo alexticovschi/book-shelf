@@ -58,84 +58,93 @@ class EditReview extends PureComponent {
         const review_deleted = this.props.books.review_deleted;
 		return (
 			<div className="rl_container article">
-                { 
-                    updated_review ?   
-                        <div className="edit_confirm">
-                            Review Updated, <Link to={`/books/${book._id}`}>Click here to view the Post!</Link>
-                        </div>
-                    : null
-                }
-                {
-                    review_deleted ?
-                        <div className="red_tag">
-                            Review Deleted!
-                            {this.redirectUser()}
-                        </div>
-                    : null
-                }
-				<form onSubmit={this.onSubmitForm}>
-					<h2>Edit review</h2>
+				<div className="container">
+					<div className="row align-items-center justify-content-center">
+						<div className="col col-sm-12 col-md-8 col-lg-8 col-xl-8">
+							{ 
+								updated_review ?   
+									<div className="edit_confirm">
+										Review Updated, <Link to={`/books/${book._id}`}>Click here to view the Post!</Link>
+									</div>
+								: null
+							}
+							{
+								review_deleted ?
+									<div className="red_tag">
+										Review Deleted!
+										{this.redirectUser()}
+									</div>
+								: null
+							}
+							<form onSubmit={this.onSubmitForm} className="mt-5">
+								<h2>Edit Review</h2>
 
-					<div className="form_element">
-						<input 
-							type="text"
-							placeholder="Enter book name"
-							value={formdata.name || ''}
-							onChange={(e) => this.onHandleInput(e,'name')}
-						/>
-					</div>
+								<div className="form_element">
+									<input 
+										type="text"
+										placeholder="Enter book name"
+										value={formdata.name || ''}
+										onChange={(e) => this.onHandleInput(e,'name')}
+									/>
+								</div>
 
-					<div className="form_element">
-						<input 
-							type="text"
-							placeholder="Enter author"
-							value={formdata.author || ''}
-							onChange={(e) => this.onHandleInput(e,'author')}
-						/>
-					</div>		
+								<div className="form_element">
+									<input 
+										type="text"
+										placeholder="Enter author"
+										value={formdata.author || ''}
+										onChange={(e) => this.onHandleInput(e,'author')}
+									/>
+								</div>		
 
-					<textarea 
-						placeholder="Add review"
-						value={formdata.review || ''}
-						onChange={(e) => this.onHandleInput(e,'review')}	
-					/>
+								<textarea 
+									rows="6"
+									placeholder="Add review"
+									value={formdata.review || ''}
+									onChange={(e) => this.onHandleInput(e,'review')}	
+								/>
 
-					<div className="form_element">
-						<input 
-							type="number"
-							placeholder="Enter pages"
-							value={formdata.pages || ''}
-							onChange={(e) => this.onHandleInput(e,'pages')}
-						/>
+								<div className="form_element">
+									<input 
+										type="number"
+										placeholder="Enter pages"
+										value={formdata.pages || ''}
+										onChange={(e) => this.onHandleInput(e,'pages')}
+									/>
+								</div>	
+
+								<div className="form_element">
+									<select 
+										style={{padding: "16px 0px"}}
+										value={formdata.rating || ''}
+										onChange={(e) => this.onHandleInput(e,'rating')}
+									>
+										<option value="0">Rate this Book</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</div>
+
+								<div className="form_element">
+									<input 
+										type="number"
+										placeholder="Enter price"
+										value={formdata.price || ''}
+										onChange={(e) => this.onHandleInput(e,'price')}
+									/>
+								</div>	
+
+								<button type="submit">Edit Review</button>	
+								<div className="delete_post">
+									<div className="button" onClick={this.deleteReview}>Delete review</div>
+								</div>
+							</form>
+						</div>
 					</div>	
-
-					<div className="form_element">
-						<select 
-							value={formdata.rating || ''}
-							onChange={(e) => this.onHandleInput(e,'rating')}
-							>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-					</div>
-
-					<div className="form_element">
-						<input 
-							type="number"
-							placeholder="Enter price"
-							value={formdata.price || ''}
-							onChange={(e) => this.onHandleInput(e,'price')}
-						/>
-					</div>	
-
-					<button type="submit">Edit Review</button>	
-                    <div className="delete_post">
-                        <div className="button" onClick={this.deleteReview}>Delete review</div>
-                    </div>
-				</form>
+				</div>
 			</div>
 		)
 	}

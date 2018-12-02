@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 
 const BookItem = (item) => {
     return (
-        <Link to={`/books/${item._id}`} className="book_item">   
+        <Link to={`/books/${item._id}`} className="book_item mb-2">   
             <div className="book_header">
-                <h2>{item.name}</h2>
+                <span>
+                    <h2 style={{padding:"6px 0px", backgroundColor:"#fff"}}>{item.name}</h2>
+                </span>
             </div> 
             <div className="book_items">
                 <div className="book_author">

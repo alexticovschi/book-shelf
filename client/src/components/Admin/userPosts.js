@@ -27,8 +27,8 @@ class UserPosts extends Component {
 		console.log(this.props)
 		let user = this.props.user;
 		return (
-			<div className="user_posts">
-				<h2>Your Reviews:</h2>
+			<div className="container mb-5">
+				<h3 className="title mb-4">Your Reviews:</h3>
 				<table>
 					<thead>
 						<tr>

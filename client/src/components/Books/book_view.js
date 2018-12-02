@@ -47,9 +47,16 @@ class BookView extends Component {
 	render() {
 		let books = this.props.books;
 		return (
-			<div>
-				{this.renderBook(books)}
+			<div className="container mt-4">
+				<div className="row align-items-center justify-content-center">
+					<div className="col col-sm-12 col-md-8 col-lg-8">
+						{this.renderBook(books)}
+					</div>
+				</div>
 			</div>
+
+
+
 		)
 	}
 }
