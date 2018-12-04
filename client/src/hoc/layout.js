@@ -1,11 +1,11 @@
 import React from 'react';
-import Navbar from '../components/Header/Sidenav/navbar';
+import Navbar from '../components/Navbar/navbar';
 
 const Layout = (props) => {
     return (
         <div>
             <Navbar/>
-            <div className="mt-5">{props.children}</div>
+            <div className="mt-4">{props.children}</div>
         </div>
     );
 };

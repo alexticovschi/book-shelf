@@ -78,22 +78,20 @@ const Navbar = ({user}) => {
     )
 
     return (
-        <header className="header">
-            <nav className="navbar navbar-expand-md navbar-dark justify-content-end">
-                <Link to='/' className="navbar-brand logo ml-2">Book <span>Shelf</span></Link>
-                <div className="ml-auto"></div>
+        <nav className="navbar navbar-expand-md navbar-dark justify-content-end">
+            <Link to='/' className="navbar-brand logo ml-2">Book <span>Shelf</span></Link>
+            <div className="ml-auto"></div>
 
-                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
                 aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse flex-grow-0" id="navbarNav">
-                    <ul className="navbar-nav text-left justify-content-between mr-2">
-                        {showItems()}
-                    </ul>
-                </div>
-            </nav>
-        </header>
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse flex-grow-0" id="navbarNav">
+                <ul className="navbar-nav text-left justify-content-between mr-2">
+                    {showItems()}
+                </ul>
+            </div>
+        </nav>
     );
 };
 

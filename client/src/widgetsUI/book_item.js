@@ -11,7 +11,7 @@ const BookItem = (item) => {
             </div> 
             <div className="book_items">
                 <div className="book_author">
-                    {item.author}
+                    by {item.author}
                 </div>
                 <div className="book_bubble">  
                     <strong>Price</strong> ${item.price}

@@ -18,7 +18,7 @@ class BookView extends Component {
 			<div className="br_container">
 				<div className="br_header">
 					<h2>{books.book.name}</h2>
-					<h5>{books.book.author}</h5>
+					<h5><span>by</span> {books.book.author}</h5>
 					<div className="br_reviewer">
 						<span>Review by:</span> {books.reviewer.firstname} {books.reviewer.lastname}
 					</div>
@@ -49,14 +49,11 @@ class BookView extends Component {
 		return (
 			<div className="container mt-4">
 				<div className="row align-items-center justify-content-center">
-					<div className="col col-sm-12 col-md-8 col-lg-8">
+					<div className="col col-sm-12 col-md-10 col-lg-8">
 						{this.renderBook(books)}
 					</div>
 				</div>
 			</div>
-
-
-
 		)
 	}
 }

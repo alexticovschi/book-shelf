@@ -60,7 +60,7 @@ class EditReview extends PureComponent {
 			<div className="rl_container article">
 				<div className="container">
 					<div className="row align-items-center justify-content-center">
-						<div className="col col-sm-12 col-md-8 col-lg-8 col-xl-8">
+						<div className="col col-sm-12 col-md-10 col-lg-8 col-xl-8">
 							{ 
 								updated_review ?   
 									<div className="edit_confirm">
@@ -76,7 +76,7 @@ class EditReview extends PureComponent {
 									</div>
 								: null
 							}
-							<form onSubmit={this.onSubmitForm} className="mt-5">
+							<form onSubmit={this.onSubmitForm} className="mt-2">
 								<h2>Edit Review</h2>
 
 								<div className="form_element">
@@ -151,7 +151,6 @@ class EditReview extends PureComponent {
 }
 
 const mapStateToProps = (state) => {
-	// console.log(state);
 	return {
 		books: state.books
 	}
